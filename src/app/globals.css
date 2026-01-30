@@ -132,3 +132,9 @@
   justify-content: --value('center', 'space-between');
   align-items: center;
 }
+
+@layer utilities {
+  .container {
+    @apply mx-auto;
+  }
+}

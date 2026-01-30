@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Tabs from '@/components/tabs/tabs';
-import Sort from '@/components/sort';
+import Sort from './sort';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';

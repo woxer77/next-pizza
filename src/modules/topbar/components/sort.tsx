@@ -1,19 +1,17 @@
 import React from 'react';
 
 import { ArrowUpDown } from 'lucide-react';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/ui/select';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/ui/select';
+import { sortOptions } from '../constants/sort.constants';
+
+const defaultOption = sortOptions[0].value;
 
 const Sort: React.FC<ClassProps> = ({ className }) => {
-  const TEMP_SORT = [
-    { value: 'popular', name: 'popular' },
-    { value: 'alphabet', name: 'alphabet' }
-  ];
-
   return (
-    <Select>
+    <Select defaultValue={defaultOption}>
       <SelectTrigger
         className={cn(
           'cursor-pointer gap-1 rounded-md border-none bg-neutral-100 px-5 py-2.5 text-base font-semibold lowercase shadow-none',
@@ -26,10 +24,10 @@ const Sort: React.FC<ClassProps> = ({ className }) => {
         <p>
           <span className="capitalize">Sort</span> by:
         </p>
-        <SelectValue placeholder="popular" />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent position="popper" className="w-auto rounded-md lowercase">
-        {TEMP_SORT.map(({ value, name }) => (
+        {sortOptions.map(({ value, name }) => (
           <SelectItem key={value} value={value} className="rounded-sm">
             {name}
           </SelectItem>

@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 const Search: React.FC<ClassProps> = ({ className }) => {
   return (
-    <InputGroup className={cn('w-full', className)}>
+    <InputGroup className={cn('w-full rounded-md', className)}>
       <InputGroupInput placeholder="Search..." />
       <InputGroupAddon>
         <SearchIcon />

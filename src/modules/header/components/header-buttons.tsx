@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 const HeaderButtons: React.FC<ClassProps> = ({ className }) => {
   return (
-    <div className={cn('flex-center gap-x-4', className)}>
+    <div className={cn('flex-center gap-x-3', className)}>
       <ProfileButton />
       <CartButton sum={120} quantity={4} />
     </div>

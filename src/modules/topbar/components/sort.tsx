@@ -9,7 +9,7 @@ const Sort: React.FC<ClassProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'flex cursor-pointer items-center gap-x-1 rounded-xl bg-neutral-100 p-3.5 px-5 font-semibold',
+        'flex cursor-pointer items-center gap-x-1 rounded-md bg-neutral-100 p-3.5 px-5 font-semibold',
         className
       )}>
       <ArrowUpDown size={16} />

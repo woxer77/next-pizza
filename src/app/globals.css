@@ -125,6 +125,9 @@
   html {
     scroll-behavior: smooth;
   }
+  button {
+    @apply focus-visible:border-ring focus-visible:ring-ring/50 !outline-none focus-visible:ring-[3px];
+  }
 }
 
 @utility flex-* {

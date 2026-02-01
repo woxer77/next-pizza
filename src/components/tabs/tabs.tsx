@@ -9,8 +9,8 @@ import type { ClassProps } from '@/types/global';
 import type { TabsItem } from './types/types';
 import { cn } from '@/lib/utils';
 import { DEFAULT_ACTIVE_ID, DEFAULT_TABS_LIMIT } from './constants/tabs.constants';
-import useTabs from './hooks/use-tabs';
 import useTabsAnimation from './hooks/use-tabs-animation';
+import useTabsState from './hooks/use-tabs-state';
 
 interface TabsProps extends ClassProps {
   items: TabsItem[];
@@ -24,7 +24,7 @@ const Tabs: React.FC<TabsProps> = ({
   limit = DEFAULT_TABS_LIMIT,
   defaultActiveId = DEFAULT_ACTIVE_ID
 }) => {
-  const { activeId, setActiveId, displayedItems, itemsInSelect, isSelectActive } = useTabs({
+  const { activeId, setActiveId, displayedItems, itemsInSelect, isSelectActive } = useTabsState({
     items: items,
     limit: limit,
     defaultActiveId: defaultActiveId

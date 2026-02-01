@@ -13,7 +13,10 @@ const Tab: React.FC<TabProps> = ({ className, onClick, ref, isActive, text }) =>
     <button
       onClick={onClick}
       ref={ref}
-      className={cn('flex-center cursor-pointer rounded-xl px-5 py-2.5', className)}>
+      className={cn(
+        'flex-center focus-visible:border-ring focus-visible:ring-ring/50 cursor-pointer rounded-md px-5 py-2.5 !outline-none focus-visible:ring-[3px]',
+        className
+      )}>
       <p
         className={cn(
           'z-1 font-semibold capitalize transition-colors duration-300 select-none',

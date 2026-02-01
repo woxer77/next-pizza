@@ -3,52 +3,40 @@
 import React from 'react';
 
 import Tab from './tab';
+import TabSelect from './tab-select';
 
 import type { ClassProps } from '@/types/global';
+import type { TabsItem } from './types/types';
 import { cn } from '@/lib/utils';
-import type { TabsItem } from './types';
+import { DEFAULT_ACTIVE_ID, DEFAULT_TABS_LIMIT } from './constants/tabs.constants';
+import useTabs from './hooks/use-tabs';
+import useTabsAnimation from './hooks/use-tabs-animation';
 
 interface TabsProps extends ClassProps {
   items: TabsItem[];
   limit?: number;
-  activeDefaultId?: number;
+  defaultActiveId?: number;
 }
 
-const Tabs: React.FC<TabsProps> = ({ className, items, limit = 5, activeDefaultId = 0 }) => {
-  const filteredItems = items.slice(0, limit);
+const Tabs: React.FC<TabsProps> = ({
+  className,
+  items,
+  limit = DEFAULT_TABS_LIMIT,
+  defaultActiveId = DEFAULT_ACTIVE_ID
+}) => {
+  const { activeId, setActiveId, displayedItems, itemsInSelect, isSelectActive } = useTabs({
+    items: items,
+    limit: limit,
+    defaultActiveId: defaultActiveId
+  });
 
-  const [activeId, setActiveId] = React.useState(activeDefaultId);
-
-  const parentRef = React.useRef<HTMLDivElement>(null);
-  const moveableRef = React.useRef<HTMLDivElement>(null);
-  const targetRef = React.useRef<HTMLButtonElement>(null);
-
-  function moveTab() {
-    if (!parentRef.current || !moveableRef.current || !targetRef.current) return;
-
-    const parentInfo = parentRef.current.getBoundingClientRect();
-    const targetInfo = targetRef.current.getBoundingClientRect();
-
-    const left = targetInfo.left - parentInfo.left;
-    const width = targetInfo.width;
-    const height = targetInfo.height;
-
-    moveableRef.current.style.transform = `translateX(${left}px)`;
-    moveableRef.current.style.width = `${width}px`;
-    moveableRef.current.style.height = `${height}px`;
-  }
-
-  React.useEffect(() => {
-    moveTab();
-  }, [activeId]);
-
-  React.useLayoutEffect(() => {
-    moveTab();
-  }, []);
+  const { parentRef, moveableRef, targetRef, moveTabToSelect } = useTabsAnimation(activeId, setActiveId);
 
   return (
-    <section ref={parentRef} className={cn('relative flex gap-x-1 rounded-xl bg-neutral-100 p-1', className)}>
-      {filteredItems.map(({ id, name }) => (
+    <section
+      ref={parentRef}
+      className={cn('relative flex items-center gap-x-1 rounded-md bg-neutral-100 p-1', className)}>
+      {displayedItems.map(({ id, name }) => (
         <Tab
           key={id}
           onClick={() => setActiveId(id)}
@@ -57,9 +45,18 @@ const Tabs: React.FC<TabsProps> = ({ className, items, limit = 5, activeDefaultI
           text={name}
         />
       ))}
+      {itemsInSelect.length > 0 && (
+        <TabSelect
+          items={itemsInSelect}
+          value={isSelectActive ? activeId.toString() : ''}
+          onValueChange={moveTabToSelect}
+          ref={isSelectActive ? targetRef : null}
+          isActive={isSelectActive}
+        />
+      )}
       <div
         ref={moveableRef}
-        className="bg-background absolute top-1/2 left-0 -translate-y-1/2 rounded-xl shadow-md transition-all duration-300"
+        className="bg-background absolute top-1/2 left-0 -translate-y-1/2 rounded-md shadow-md transition-all duration-300"
       />
     </section>
   );

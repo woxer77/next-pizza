@@ -7,11 +7,11 @@ import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
 import { sortOptions } from '../constants/sort.constants';
 
-const defaultOption = sortOptions[0].value;
+const defaultOption = sortOptions[0];
 
 const Sort: React.FC<ClassProps> = ({ className }) => {
   return (
-    <Select defaultValue={defaultOption}>
+    <Select defaultValue={defaultOption.value}>
       <SelectTrigger
         className={cn(
           'cursor-pointer gap-1 rounded-md border-none bg-neutral-100 px-5 py-2.5 text-base font-semibold lowercase shadow-none',
@@ -24,7 +24,7 @@ const Sort: React.FC<ClassProps> = ({ className }) => {
         <p>
           <span className="capitalize">Sort</span> by:
         </p>
-        <SelectValue />
+        <SelectValue placeholder={defaultOption.name} />
       </SelectTrigger>
       <SelectContent position="popper" className="w-auto rounded-md lowercase">
         {sortOptions.map(({ value, name }) => (

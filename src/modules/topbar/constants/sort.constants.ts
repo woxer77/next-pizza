@@ -1,4 +1,4 @@
-import { SortOption } from '../types/types';
+import { SortOption } from '../types/topbar.types';
 
 export const sortOptions: SortOption[] = [
   { value: 'popular', name: 'popular' },

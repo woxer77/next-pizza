@@ -6,7 +6,7 @@ import Tab from './tab';
 import TabSelect from './tab-select';
 
 import type { ClassProps } from '@/types/global';
-import type { TabsItem } from './types/types';
+import type { TabsItem } from './types/tabs.types';
 import { cn } from '@/lib/utils';
 import { DEFAULT_ACTIVE_ID, DEFAULT_TABS_LIMIT } from './constants/tabs.constants';
 import useTabsAnimation from './hooks/use-tabs-animation';

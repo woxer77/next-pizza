@@ -4,7 +4,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import { TabsItem } from './types/types';
+import { TabsItem } from './types/tabs.types';
 
 interface TabSelectProps extends ClassProps {
   items: TabsItem[];

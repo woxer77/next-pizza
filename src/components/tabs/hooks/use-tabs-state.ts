@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TabsItem } from '../types/types';
+import { TabsItem } from '../types/tabs.types';
 
 interface UseTabsStateProps {
   items: TabsItem[];

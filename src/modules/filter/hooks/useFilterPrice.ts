@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputPriceType, PriceRange } from '../types/types';
+import { InputPriceType, PriceRange } from '../types/filter.types';
 
 interface UseFilterPriceProps {
   defaultValue?: PriceRange<number>;

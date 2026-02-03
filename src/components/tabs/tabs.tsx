@@ -33,7 +33,7 @@ const Tabs: React.FC<TabsProps> = ({
   const { parentRef, moveableRef, targetRef, moveTabToSelect } = useTabsAnimation(activeId, setActiveId);
 
   return (
-    <section
+    <nav
       ref={parentRef}
       className={cn('relative flex items-center gap-x-1 rounded-md bg-neutral-100 p-1', className)}>
       {displayedItems.map(({ id, name }) => (
@@ -58,7 +58,7 @@ const Tabs: React.FC<TabsProps> = ({
         ref={moveableRef}
         className="bg-background absolute top-1/2 left-0 -translate-y-1/2 rounded-md shadow-md transition-all duration-300"
       />
-    </section>
+    </nav>
   );
 };
 

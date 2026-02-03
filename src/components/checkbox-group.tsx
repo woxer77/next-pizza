@@ -68,7 +68,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
               placeholder={placeholder}
             />
             <InputGroupAddon align="inline-end">
-              <X onClick={clearInput} className="cursor-pointer" />
+              {inputText.trim() && <X onClick={clearInput} className="cursor-pointer" />}
             </InputGroupAddon>
           </InputGroup>
         </div>

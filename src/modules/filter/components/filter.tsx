@@ -63,7 +63,7 @@ const Filter: React.FC<ClassProps> = ({ className }) => {
         </FilterGroup>
         <hr className="mb-6" />
         <FilterGroup title="Ingredients">
-          <CheckboxGroup items={ingr} />
+          <CheckboxGroup items={ingr} className="pb-1" />
         </FilterGroup>
         <hr className="mb-6" />
         <FilterGroup title="Sizes">

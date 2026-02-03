@@ -5,7 +5,7 @@ import React from 'react';
 import CheckboxItem from '@/ui/checkbox-item';
 import { Button } from '@/ui/button';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/ui/input-group';
-import { X } from 'lucide-react';
+import InputResetButton from '@/ui/input-reset-btn';
 
 import type { ClassProps, CheckboxOption } from '@/types/global';
 import { cn } from '@/lib/utils';
@@ -41,7 +41,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     setInputText(value);
   }
 
-  function clearInput() {
+  function resetInput() {
     if (!inputText.trim()) return;
 
     setInputText('');
@@ -68,7 +68,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
               placeholder={placeholder}
             />
             <InputGroupAddon align="inline-end">
-              {inputText.trim() && <X onClick={clearInput} className="cursor-pointer" />}
+              <InputResetButton onClick={resetInput} isActive={!!inputText.trim()} />
             </InputGroupAddon>
           </InputGroup>
         </div>

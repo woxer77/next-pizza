@@ -5,7 +5,7 @@ import React from 'react';
 import CheckboxItem from '@/ui/checkbox-item';
 import { Button } from '@/ui/button';
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/ui/input-group';
-import InputResetButton from '@/ui/input-reset-btn';
+import InputResetButton from '@/ui/input-reset-button';
 
 import type { ClassProps, CheckboxOption } from '@/types/global';
 import { cn } from '@/lib/utils';

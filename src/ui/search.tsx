@@ -5,7 +5,7 @@ import { Search as SearchIcon } from 'lucide-react';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import InputResetButton from './input-reset-btn';
+import InputResetButton from './input-reset-button';
 
 interface SearchProps extends ClassProps {
   value: string;

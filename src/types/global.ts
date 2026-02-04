@@ -12,3 +12,5 @@ export interface IOption<T extends string | number> {
   content: string;
   href?: string;
 }
+
+export type ProductRoute = `products/${number}`;

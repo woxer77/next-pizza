@@ -9,7 +9,7 @@ import { categories } from '@/constants/category.constants';
 
 const TopBar: React.FC<ClassProps> = ({ className }) => {
   return (
-    <div className={cn('sticky top-0 shadow-lg shadow-neutral-200', className)}>
+    <div className={cn('bg-background sticky top-0 shadow-lg shadow-neutral-200', className)}>
       <div className="flex-space-between container py-6">
         <Tabs items={categories} />
         <Sort />

@@ -4,12 +4,12 @@ import ProductCard from '@/ui/product-card';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import type { Product } from '@/modules/products';
+import type { ProductGroupProduct } from '@/modules/products';
 
 interface ProductGroupProps extends ClassProps {
   listClassName?: string;
   title: string;
-  products: Product[];
+  products: ProductGroupProduct[];
 }
 
 const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products, listClassName }) => {

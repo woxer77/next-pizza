@@ -11,7 +11,7 @@ const TopBar: React.FC<ClassProps> = async ({ className }) => {
   const categories = await categoryService.getAll();
 
   return (
-    <div className={cn('bg-background sticky top-0 shadow-lg shadow-neutral-200', className)}>
+    <div className={cn('bg-background sticky top-0 z-5 shadow-lg shadow-neutral-200', className)}>
       <div className="flex-space-between container py-6">
         <Tabs items={categories} />
         <Sort />

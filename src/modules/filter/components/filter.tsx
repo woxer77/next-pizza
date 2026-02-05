@@ -5,7 +5,7 @@ import FilterGroup from './filter-group';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import FilterPrice from '@/modules/filter/components/filter-price';
+import FilterPrice from './filter-price';
 import { Button } from '@/ui/button';
 
 const Filter: React.FC<ClassProps> = ({ className }) => {

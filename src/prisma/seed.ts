@@ -111,7 +111,7 @@ async function generate() {
     data: {
       name: 'Cheese',
       description: 'Classic cheese pizza with stretchy mozzarella and house tomato sauce.',
-      image: '/pizza/cheese.png',
+      image: '/pizza/traditional/cheese.png',
       basePrice: 8.5,
       categoryId: 0,
       ingredients: {
@@ -123,7 +123,7 @@ async function generate() {
     data: {
       name: 'Chorizo',
       description: 'Spicy chorizo slices, tomato sauce and mozzarella.',
-      image: '/pizza/chorizo.png',
+      image: '/pizza/traditional/chorizo.png',
       basePrice: 9.5,
       categoryId: 0,
       ingredients: {
@@ -135,7 +135,7 @@ async function generate() {
     data: {
       name: 'Double Chicken',
       description: 'Double portion of tender chicken, mozzarella and creamy sauce.',
-      image: '/pizza/double-chicken.png',
+      image: '/pizza/traditional/double-chicken.png',
       basePrice: 10.5,
       categoryId: 0,
       ingredients: {
@@ -147,7 +147,7 @@ async function generate() {
     data: {
       name: 'Four Cheese',
       description: 'Blend of mozzarella, blue cheese, parmesan and cheddar.',
-      image: '/pizza/four-cheese.png',
+      image: '/pizza/traditional/four-cheese.png',
       basePrice: 10.0,
       categoryId: 0,
       ingredients: {
@@ -159,7 +159,7 @@ async function generate() {
     data: {
       name: 'Ham and Cheese',
       description: 'Smoked ham, mozzarella and light creamy base.',
-      image: '/pizza/ham-and-cheese.png',
+      image: '/pizza/traditional/ham-and-cheese.png',
       basePrice: 9.0,
       categoryId: 0,
       ingredients: {
@@ -171,7 +171,7 @@ async function generate() {
     data: {
       name: 'Ham and Mushrooms',
       description: 'Ham, fresh mushrooms, mozzarella and tomato sauce.',
-      image: '/pizza/ham-and-mushrooms.png',
+      image: '/pizza/traditional/ham-and-mushrooms.png',
       basePrice: 9.2,
       categoryId: 0,
       ingredients: {
@@ -183,7 +183,7 @@ async function generate() {
     data: {
       name: 'Pepperoni',
       description: 'Pepperoni slices, rich tomato sauce and extra mozzarella.',
-      image: '/pizza/pepperoni.png',
+      image: '/pizza/traditional/pepperoni.png',
       basePrice: 9.8,
       categoryId: 0,
       ingredients: {

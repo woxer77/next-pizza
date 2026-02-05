@@ -19,8 +19,14 @@ interface ProductCardProps extends ClassProps {
 const ProductCard: React.FC<ProductCardProps> = ({ className, name, description, price, href, image }) => {
   return (
     <div className={cn('flex flex-col', className)}>
-      <Link href={href} className="flex-center">
-        <Image src={image} alt={name} className="mb-4 h-[300px]" width={300} height={300} />
+      <Link href={href} className="flex-center group">
+        <Image
+          src={image}
+          alt={name}
+          className="mb-4 h-[300px] transition-transform group-hover:-translate-y-1.5"
+          width={300}
+          height={300}
+        />
       </Link>
       <div className="mb-3 flex flex-col gap-2">
         <h4 className="text-2xl font-bold capitalize">{name}</h4>

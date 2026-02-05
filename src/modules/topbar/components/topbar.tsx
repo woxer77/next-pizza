@@ -5,9 +5,11 @@ import Sort from './sort';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import { categories } from '@/constants/category.constants';
+import { categoryService } from '@/services/category/category.service';
 
-const TopBar: React.FC<ClassProps> = ({ className }) => {
+const TopBar: React.FC<ClassProps> = async ({ className }) => {
+  const categories = await categoryService.getAll();
+
   return (
     <div className={cn('bg-background sticky top-0 shadow-lg shadow-neutral-200', className)}>
       <div className="flex-space-between container py-6">

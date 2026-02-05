@@ -1,7 +1,10 @@
+import { Suspense } from 'react';
+
 import { Header } from '@/modules/header/index';
 import { TopBar } from '@/modules/topbar/index';
 import { Filter } from '@/modules/filter/index';
 import { Products } from '@/modules/products/index';
+import { Skeleton } from '@/ui/skeleton';
 
 export default function Home() {
   return (
@@ -11,7 +14,9 @@ export default function Home() {
         <TopBar />
         <div className="container mt-10 flex h-full gap-18">
           <Filter />
-          <Products />
+          <Suspense fallback={<Skeleton />}>
+            <Products />
+          </Suspense>
         </div>
       </div>
     </div>

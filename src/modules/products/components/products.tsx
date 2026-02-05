@@ -4,56 +4,16 @@ import ProductGroup from '@/components/product-group';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
+import { categoryService } from '@/services/category/category.service';
 
-const Products: React.FC<ClassProps> = ({ className }) => {
-  const temp_products = [
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    },
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    },
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    },
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    },
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    },
-    {
-      name: 'pizza1',
-      description: 'dakjs lkdj alks jdlkas jdlsa jdlksajkld',
-      href: 'products/1',
-      image: '/pizza/traditional/cheese.png',
-      price: 10
-    }
-  ];
+const Products: React.FC<ClassProps> = async ({ className }) => {
+  const categories = await categoryService.getAllWithProducts();
 
   return (
-    <main className={cn('w-full', className)}>
-      <ProductGroup title="Pizzas" products={temp_products} />
+    <main className={cn('flex w-full flex-col gap-10', className)}>
+      {categories.map((category) => (
+        <ProductGroup key={category.id} title={category.name} products={category.products} />
+      ))}
     </main>
   );
 };

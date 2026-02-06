@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
-import CheckboxGroup from '@/components/checkbox-group';
 import FilterGroup from './filter-group';
 import { Button } from '@/ui/button';
 import FilterPrice from './filter-price';
+import FilterGroupAsync from './filter-group-async';
+import FilterGroupSkeleton from './filter-group-skeleton';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
 import { API } from '@/services/api-client';
-import { mapToOptions } from '@/helpers/checkbox.helpers';
 import { MAX_PRICE, MIN_PRICE } from '../constants/filter-price.constants';
 
 const priceRangeDefault = {
@@ -17,33 +17,24 @@ const priceRangeDefault = {
 };
 
 const Filter: React.FC<ClassProps> = async ({ className }) => {
-  const [doughTypesData, ingredientsData, sizesData] = await Promise.all([
-    API.doughType.getAll(),
-    API.ingredient.getAll(),
-    API.size.getAll()
-  ]);
-
-  const doughTypes = mapToOptions(doughTypesData);
-  const ingredients = mapToOptions(ingredientsData);
-  const sizes = mapToOptions(sizesData);
   return (
-    <aside className={cn('sticky top-35 flex h-[calc(100vh-18rem)] max-w-61 flex-col gap-5 pr-2 pb-2', className)}>
-      <div className="overflow-y-auto">
-        <FilterGroup title="Dough type">
-          <CheckboxGroup items={doughTypes} name="doughTypes" />
-        </FilterGroup>
-        <hr className="mb-6" />
+    <aside className={cn('sticky top-35 flex h-[calc(100vh-18rem)] w-61 flex-col gap-5 pb-2', className)}>
+      <div className="overflow-y-auto pr-2">
+        <Suspense fallback={<FilterGroupSkeleton title="Dough type" limit={2} />}>
+          <FilterGroupAsync callback={API.doughType.getAll} name="doughTypes" title="Dough type" />
+        </Suspense>
+        <hr className="my-6" />
         <FilterGroup title="Price">
           <FilterPrice defaultValue={priceRangeDefault} min={MIN_PRICE} max={MAX_PRICE} step={1} />
         </FilterGroup>
-        <hr className="mb-6" />
-        <FilterGroup title="Ingredients">
-          <CheckboxGroup items={ingredients} name="ingredients" className="pb-1" />
-        </FilterGroup>
-        <hr className="mb-6" />
-        <FilterGroup title="Sizes">
-          <CheckboxGroup items={sizes} name="sizes" />
-        </FilterGroup>
+        <hr className="my-6" />
+        <Suspense fallback={<FilterGroupSkeleton title="Ingredients" />}>
+          <FilterGroupAsync callback={API.ingredient.getAll} name="ingredients" title="Ingredients" />
+        </Suspense>
+        <hr className="my-6" />
+        <Suspense fallback={<FilterGroupSkeleton title="Sizes" limit={4} />}>
+          <FilterGroupAsync callback={API.size.getAll} name="sizes" title="Sizes" />
+        </Suspense>
       </div>
       <Button>Submit</Button>
     </aside>

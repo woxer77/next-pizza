@@ -10,7 +10,7 @@ async function getCategories() {
   return categories;
 }
 
-export async function getCategoriesWithProducts() {
+async function getCategoriesWithProducts() {
   const categories = await prisma.category.findMany({
     include: {
       products: {

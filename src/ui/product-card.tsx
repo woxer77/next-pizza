@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ className, name, description,
           height={300}
         />
       </Link>
-      <div className="mb-3 flex flex-col gap-2">
+      <div className="mb-3 flex grow flex-col gap-2">
         <h4 className="text-2xl font-bold capitalize">{name}</h4>
         <p className="text-description">{description}</p>
       </div>

@@ -13,7 +13,9 @@ export default function Home() {
       <div className="h-[2000px]">
         <TopBar />
         <div className="container mt-10 flex h-full gap-18">
-          <Filter />
+          <Suspense fallback={<Skeleton />}>
+            <Filter />
+          </Suspense>
           <Suspense fallback={<Skeleton />}>
             <Products />
           </Suspense>

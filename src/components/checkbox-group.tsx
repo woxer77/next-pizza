@@ -14,13 +14,15 @@ interface CheckboxGroupProps extends ClassProps {
   items: CheckboxOption[];
   limit?: number;
   placeholder?: string;
+  name: string;
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   className,
   items,
   limit = 5,
-  placeholder = 'Search...'
+  placeholder = 'Search...',
+  name
 }) => {
   const [displayedItems, setDisplayedItems] = React.useState(() => items.slice(0, limit));
   const [inputVisibility, setInputVisibility] = React.useState(false);
@@ -35,10 +37,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     }
     setInputVisibility(true);
     setDisplayedItems(items);
-  }
-
-  function filterItems(value: string) {
-    setInputText(value);
   }
 
   function resetInput() {
@@ -64,7 +62,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           <InputGroup>
             <InputGroupInput
               value={inputText}
-              onChange={(e) => filterItems(e.target.value)}
+              onChange={(e) => setInputText(e.target.value)}
               placeholder={placeholder}
             />
             <InputGroupAddon align="inline-end">
@@ -74,7 +72,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         </div>
       )}
       {displayedItems.map(({ value, text }) => (
-        <CheckboxItem key={value} id={value} value={value} text={text} />
+        <CheckboxItem key={value} value={value} text={text} name={name} />
       ))}
       {items.length > limit && !inputText.trim() && (
         <Button onClick={switchDisplayMode} variant="link" className="w-fit p-0 font-medium text-red-700">

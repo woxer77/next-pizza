@@ -1,10 +1,10 @@
 import React from 'react';
 
 import ProductCard from '@/ui/product-card';
+import type { ProductGroupProduct } from '@/modules/products/index';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/lib/utils';
-import type { ProductGroupProduct } from '@/modules/products';
 
 interface ProductGroupProps extends ClassProps {
   listClassName?: string;

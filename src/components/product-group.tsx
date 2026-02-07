@@ -14,7 +14,7 @@ interface ProductGroupProps extends ClassProps {
 
 const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products, listClassName }) => {
   return (
-    <section className={cn('', className)}>
+    <section className={cn('last:mb-10', className)}>
       <h3 className="mb-6 text-3xl font-bold capitalize">{title}</h3>
       <div className={cn('grid gap-12', listClassName, 'grid-cols-3')}>
         {products.map(({ id, name, description, image, basePrice }) => (

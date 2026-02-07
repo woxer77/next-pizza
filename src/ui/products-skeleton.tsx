@@ -11,7 +11,7 @@ interface ProductsSkeletonProps extends ClassProps {
 
 const ProductsSkeleton: React.FC<ProductsSkeletonProps> = ({ className, limit = 3 }) => {
   return (
-    <div className={cn('grid w-full gap-12', className, 'grid-cols-3')}>
+    <div className={cn('grid w-full gap-10 last:mb-10', className, 'grid-cols-3')}>
       {Array.from({ length: limit }).map((_, idx) => (
         <ProductCardSkeleton key={idx} />
       ))}

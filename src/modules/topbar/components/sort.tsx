@@ -14,7 +14,7 @@ const Sort: React.FC<ClassProps> = ({ className }) => {
     <Select defaultValue={defaultOption.value}>
       <SelectTrigger
         className={cn(
-          'cursor-pointer gap-1 rounded-md border-none bg-neutral-100 px-5 py-2.5 text-base font-semibold lowercase shadow-none',
+          'cursor-pointer gap-1 rounded-md border-none bg-neutral-100 px-5 py-3.5 text-base font-semibold lowercase shadow-none',
           '[&_[data-slot=select-value]]:text-red-700',
           'data-[placeholder]:text-foreground',
           className

@@ -5,6 +5,7 @@ import type { ProductGroupProduct } from '@/modules/products/index';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
+import { ROUTES } from '@/constants/routes';
 
 interface ProductGroupProps extends ClassProps {
   listClassName?: string;
@@ -22,7 +23,7 @@ const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products,
             key={id}
             name={name}
             description={description}
-            href={`products/${id}`}
+            href={`${ROUTES.PRODUCTS}/${id}`}
             image={image}
             price={basePrice}
           />

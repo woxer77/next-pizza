@@ -4,7 +4,7 @@ import { Button } from '@/ui/button';
 import { MoveRight, ShoppingCart } from 'lucide-react';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface CartButtonProps extends ClassProps {
   sum: number;

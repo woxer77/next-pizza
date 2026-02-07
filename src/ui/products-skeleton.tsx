@@ -3,7 +3,7 @@ import React from 'react';
 import ProductCardSkeleton from './product-card-skeleton';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface ProductsSkeletonProps extends ClassProps {
   limit?: number;

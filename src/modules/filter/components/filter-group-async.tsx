@@ -4,7 +4,7 @@ import FilterGroup from './filter-group';
 import CheckboxGroup from '@/components/checkbox-group';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import { mapToOptions } from '@/helpers/checkbox.helpers';
 
 interface FilterGroupAsyncProps extends ClassProps {

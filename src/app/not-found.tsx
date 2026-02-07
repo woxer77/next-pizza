@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import { useRouter } from 'next/navigation';
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 const NotFound: React.FC<ClassProps> = ({ className }) => {
   const router = useRouter();

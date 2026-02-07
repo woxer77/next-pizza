@@ -3,7 +3,7 @@ import React from 'react';
 import { X } from 'lucide-react';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface InputResetButtonProps extends ClassProps {
   onClick: () => void;

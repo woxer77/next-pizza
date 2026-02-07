@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface TabProps extends ClassProps, React.ComponentProps<'button'> {
   isActive: boolean;

@@ -4,7 +4,7 @@ import { Checkbox } from './checkbox';
 import { Label } from './label';
 
 import type { CheckboxOption, ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface CheckboxItemProps extends ClassProps, CheckboxOption {
   name: string;

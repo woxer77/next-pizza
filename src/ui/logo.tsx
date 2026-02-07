@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 const Logo: React.FC<ClassProps> = ({ className }) => {
   return (

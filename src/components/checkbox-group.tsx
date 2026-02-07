@@ -8,7 +8,7 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from '@/ui/input-group';
 import InputResetButton from '@/ui/input-reset-button';
 
 import type { ClassProps, CheckboxOption } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface CheckboxGroupProps extends ClassProps {
   items: CheckboxOption[];

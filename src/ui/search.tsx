@@ -4,7 +4,7 @@ import { InputGroup, InputGroupInput, InputGroupAddon } from '@/ui/input-group';
 import { Search as SearchIcon } from 'lucide-react';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import InputResetButton from './input-reset-button';
 
 interface SearchProps extends ClassProps {

@@ -7,7 +7,7 @@ import { Input } from '@/ui/input';
 
 import type { ClassProps } from '@/types/global';
 import type { PriceRange } from '../types/filter.types';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import useFilterPrice from '../hooks/useFilterPrice';
 
 interface FilterPriceProps extends ClassProps {

@@ -7,7 +7,7 @@ import FilterGroupAsync from './filter-group-async';
 import FilterGroupSkeleton from './filter-group-skeleton';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import { API } from '@/services/api-client';
 import { MAX_PRICE, MIN_PRICE } from '../constants/filter-price.constants';
 

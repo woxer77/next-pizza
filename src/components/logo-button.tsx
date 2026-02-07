@@ -4,7 +4,7 @@ import Logo from '@/ui/logo';
 import Link from 'next/link';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import { ROUTES } from '@/constants/routes';
 
 const LogoButton: React.FC<ClassProps> = ({ className }) => {

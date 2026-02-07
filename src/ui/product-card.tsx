@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Button } from './button';
 
 import type { ClassProps, ProductRoute } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import { Plus } from 'lucide-react';
 
 interface ProductCardProps extends ClassProps {

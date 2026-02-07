@@ -3,7 +3,7 @@ import React from 'react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/ui/select';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import { TabsItem } from './types/tabs.types';
 
 interface TabSelectProps extends ClassProps {

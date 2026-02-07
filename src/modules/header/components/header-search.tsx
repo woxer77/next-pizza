@@ -5,7 +5,7 @@ import React from 'react';
 import Search from '@/ui/search';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 const HeaderSearch: React.FC<ClassProps> = ({ className }) => {
   const [inputText, setInputText] = React.useState('');

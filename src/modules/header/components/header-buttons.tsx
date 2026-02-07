@@ -4,7 +4,7 @@ import CartButton from './cart-button';
 import ProfileButton from './profile-button';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 const HeaderButtons: React.FC<ClassProps> = ({ className }) => {
   return (

@@ -3,7 +3,7 @@ import React from 'react';
 import { Skeleton } from './skeleton';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 const ProductCardSkeleton: React.FC<ClassProps> = ({ className }) => {
   return (

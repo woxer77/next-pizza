@@ -4,7 +4,7 @@ import { Skeleton } from '@/ui/skeleton';
 import FilterGroupTitle from './filter-group-title';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 
 interface FilterGroupSkeletonProps extends ClassProps {
   limit?: number;

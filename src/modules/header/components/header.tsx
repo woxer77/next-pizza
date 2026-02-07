@@ -4,7 +4,7 @@ import LogoButton from '../../../components/logo-button';
 import HeaderSearch from './header-search';
 
 import type { ClassProps } from '@/types/global';
-import { cn } from '@/lib/utils';
+import { cn } from '@/helpers/utils';
 import HeaderButtons from './header-buttons';
 
 const Header: React.FC<ClassProps> = ({ className }) => {

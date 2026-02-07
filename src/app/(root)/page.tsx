@@ -5,7 +5,7 @@ import { Filter } from '@/modules/filter/index';
 import { Products } from '@/modules/products/index';
 import ProductsSkeleton from '@/ui/products-skeleton';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 export default function Home() {
   return (

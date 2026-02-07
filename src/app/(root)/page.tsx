@@ -5,6 +5,8 @@ import { Filter } from '@/modules/filter/index';
 import { Products } from '@/modules/products/index';
 import ProductsSkeleton from '@/ui/products-skeleton';
 
+export const revalidate = 30;
+
 export default function Home() {
   return (
     <div>

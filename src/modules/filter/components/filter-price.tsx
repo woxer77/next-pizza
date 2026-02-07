@@ -18,7 +18,7 @@ interface FilterPriceProps extends ClassProps {
 }
 
 const FilterPrice: React.FC<FilterPriceProps> = ({ className, defaultValue, min = 0, max, step }) => {
-  const { priceRange, inputValues, minStepsBetweenThumbs, onInputChange, onInputBlur, onSliderChange } =
+  const { inputValues, minStepsBetweenThumbs, onInputChange, onInputBlur, onSliderChange, onSliderCommit } =
     useFilterPrice({ defaultValue, min, max });
 
   return (
@@ -39,9 +39,10 @@ const FilterPrice: React.FC<FilterPriceProps> = ({ className, defaultValue, min 
         />
       </div>
       <Slider
-        value={[priceRange.from, priceRange.to]}
+        value={[Number(inputValues.from), Number(inputValues.to)]}
         minStepsBetweenThumbs={minStepsBetweenThumbs / step}
         onValueChange={onSliderChange}
+        onValueCommit={onSliderCommit}
         min={min}
         max={max}
         step={step}

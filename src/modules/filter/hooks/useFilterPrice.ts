@@ -64,11 +64,22 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
   }
 
   function onSliderChange(value: [number, number]) {
-    setPriceRange({ from: value[0], to: value[1] });
     setInputValues({ from: value[0].toString(), to: value[1].toString() });
   }
 
-  return { priceRange, inputValues, minStepsBetweenThumbs, onInputChange, onInputBlur, onSliderChange };
+  function onSliderCommit(value: [number, number]) {
+    setPriceRange({ from: value[0], to: value[1] });
+  }
+
+  return {
+    priceRange,
+    inputValues,
+    minStepsBetweenThumbs,
+    onInputChange,
+    onInputBlur,
+    onSliderChange,
+    onSliderCommit
+  };
 }
 
 export default useFilterPrice;

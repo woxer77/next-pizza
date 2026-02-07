@@ -2,10 +2,10 @@ import React from 'react';
 
 import LogoButton from '../../../components/logo-button';
 import HeaderSearch from './header-search';
+import HeaderButtons from './header-buttons';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
-import HeaderButtons from './header-buttons';
 
 const Header: React.FC<ClassProps> = ({ className }) => {
   return (

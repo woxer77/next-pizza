@@ -16,7 +16,7 @@ const priceRangeDefault = {
   to: MAX_PRICE
 };
 
-const Filter: React.FC<ClassProps> = async ({ className }) => {
+const Filter: React.FC<ClassProps> = ({ className }) => {
   return (
     <aside className={cn('sticky top-2 flex h-[calc(100vh-18rem)] w-61 shrink-0 flex-col gap-5 pb-2', className)}>
       <div className="overflow-y-auto pr-2">

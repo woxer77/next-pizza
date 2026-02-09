@@ -15,6 +15,8 @@ interface CheckboxGroupProps extends ClassProps {
   limit?: number;
   placeholder?: string;
   name: string;
+  checkedValues: Set<string>;
+  onCheckedChange: (id: string) => void;
 }
 
 const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
@@ -22,7 +24,9 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   items,
   limit = 5,
   placeholder = 'Search...',
-  name
+  name,
+  checkedValues,
+  onCheckedChange
 }) => {
   const [displayedItems, setDisplayedItems] = React.useState(() => items.slice(0, limit));
   const [inputVisibility, setInputVisibility] = React.useState(false);
@@ -72,7 +76,14 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         </div>
       )}
       {displayedItems.map(({ value, text }) => (
-        <CheckboxItem key={value} value={value} text={text} name={name} />
+        <CheckboxItem
+          key={value}
+          value={value}
+          text={text}
+          name={name}
+          checked={checkedValues.has(value)}
+          onCheckedChange={onCheckedChange}
+        />
       ))}
       {items.length > limit && !inputText.trim() && (
         <Button onClick={switchDisplayMode} variant="link" className="w-fit p-0 font-medium text-red-700">

@@ -12,11 +12,9 @@ import type { ClassProps, CheckboxOption } from '@/types/global';
 import { cn } from '@/helpers/utils';
 import { MAX_PRICE, MIN_PRICE } from '../constants/filter-price.constants';
 import useSet from '../hooks/useSet';
-
-const priceRangeDefault = {
-  from: MIN_PRICE,
-  to: MAX_PRICE
-};
+import { useRouter, useSearchParams } from 'next/navigation';
+import qs from 'qs';
+import { PARAMS } from '@/constants/query-params.constants';
 
 interface FilterClientProps extends ClassProps {
   doughTypesPromise: Promise<CheckboxOption[]>;
@@ -30,9 +28,44 @@ const FilterClient: React.FC<FilterClientProps> = ({
   ingredientsPromise,
   sizesPromise
 }) => {
-  const doughTypesSet = useSet(new Set<string>([]));
-  const ingredientsSet = useSet(new Set<string>([]));
-  const sizesSet = useSet(new Set<string>([]));
+  const params = useSearchParams();
+  const router = useRouter();
+
+  function getParamSet(filterGroup: string) {
+    return new Set(params.getAll(filterGroup).flatMap((elem) => elem.split(',')));
+  }
+
+  const defaultSetParams = {
+    doughTypes: getParamSet(PARAMS.DOUGH_TYPES),
+    ingredients: getParamSet(PARAMS.INGREDIENTS),
+    sizes: getParamSet(PARAMS.SIZES)
+  };
+
+  const doughTypesSet = useSet(defaultSetParams.doughTypes);
+  const ingredientsSet = useSet(defaultSetParams.ingredients);
+  const sizesSet = useSet(defaultSetParams.sizes);
+  const priceFrom = params.get(PARAMS.PRICE_FROM);
+  const priceTo = params.get(PARAMS.PRICE_TO);
+
+  const priceRangeDefault = {
+    // TODO: BUG! add validation from URL
+    from: Number(priceFrom ?? MIN_PRICE),
+    to: Number(priceTo ?? MAX_PRICE)
+  };
+
+  React.useEffect(() => {
+    const filters = {
+      doughTypes: Array.from(doughTypesSet.values),
+      ingredients: Array.from(ingredientsSet.values),
+      sizes: Array.from(sizesSet.values),
+      priceFrom: priceFrom || undefined,
+      priceTo: priceTo || undefined
+    };
+
+    const query = qs.stringify(filters, { arrayFormat: 'comma' });
+
+    router.push(`?${query}`, { scroll: false });
+  }, [doughTypesSet.values, ingredientsSet.values, sizesSet.values]);
 
   return (
     <aside className={cn('sticky top-2 flex h-[calc(100vh-18rem)] w-61 shrink-0 flex-col gap-5 pb-2', className)}>

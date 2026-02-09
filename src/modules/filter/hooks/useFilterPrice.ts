@@ -1,5 +1,7 @@
 import React from 'react';
 import { InputPriceType, PriceRange } from '../types/filter.types';
+import { useRouter, useSearchParams } from 'next/navigation';
+import qs from 'qs';
 
 interface UseFilterPriceProps {
   defaultValue?: PriceRange<number>;
@@ -8,6 +10,9 @@ interface UseFilterPriceProps {
 }
 
 function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
+  const router = useRouter();
+  const params = useSearchParams();
+
   const [priceRange, setPriceRange] = React.useState<PriceRange<number>>(defaultValue ?? { from: min, to: max });
   const [inputValues, setInputValues] = React.useState<PriceRange<string>>(
     defaultValue
@@ -70,6 +75,20 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
   function onSliderCommit(value: [number, number]) {
     setPriceRange({ from: value[0], to: value[1] });
   }
+
+  React.useEffect(() => {
+    const currentFilters = qs.parse(params.toString());
+
+    const newFilters = {
+      ...currentFilters,
+      priceFrom: priceRange.from.toString(),
+      priceTo: priceRange.to.toString()
+    };
+
+    const query = qs.stringify(newFilters, { arrayFormat: 'comma' });
+
+    router.push(`?${query}`, { scroll: false });
+  }, [priceRange.from, priceRange.to]);
 
   return {
     priceRange,

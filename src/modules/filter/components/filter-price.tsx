@@ -22,7 +22,7 @@ const FilterPrice: React.FC<FilterPriceProps> = ({ className, defaultValue, min 
     useFilterPrice({ defaultValue, min, max });
 
   return (
-    <div className={cn('', className)}>
+    <div className={cn('pl-1', className)}>
       <div className="flex-space-between mb-4 flex gap-5">
         <Input
           value={inputValues.from}

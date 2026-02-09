@@ -5,6 +5,10 @@ export const sizeService = {
 };
 
 async function getSizes() {
-  const sizes = await prisma.size.findMany();
+  const sizes = await prisma.size.findMany({
+    orderBy: {
+      id: 'asc'
+    }
+  });
   return sizes;
 }

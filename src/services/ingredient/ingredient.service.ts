@@ -5,6 +5,10 @@ export const ingredientService = {
 };
 
 async function getIngredients() {
-  const ingredients = await prisma.ingredient.findMany();
+  const ingredients = await prisma.ingredient.findMany({
+    orderBy: {
+      id: 'asc'
+    }
+  });
   return ingredients;
 }

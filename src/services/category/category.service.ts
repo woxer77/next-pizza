@@ -19,6 +19,9 @@ async function getCategoriesWithProducts() {
           ingredients: true
         }
       }
+    },
+    orderBy: {
+      id: 'asc'
     }
   });
 

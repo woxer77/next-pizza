@@ -5,6 +5,10 @@ export const doughTypeService = {
 };
 
 async function getDoughTypes() {
-  const doughTypes = await prisma.doughType.findMany();
+  const doughTypes = await prisma.doughType.findMany({
+    orderBy: {
+      id: 'asc'
+    }
+  });
   return doughTypes;
 }

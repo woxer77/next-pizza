@@ -1,5 +1,3 @@
-import { Prisma } from '@prisma/client';
-import type { Prisma as PrismaType } from '@prisma/client';
 import prisma from './prisma-client';
 import { hashSync } from 'bcrypt';
 
@@ -11,7 +9,11 @@ type GenerateVariationType = (
   productId: number,
   sizeId?: 1 | 2 | 3 | 4,
   doughTypeId?: 1 | 2
-) => PrismaType.ProductVariationUncheckedCreateInput;
+) => {
+  productId: number;
+  sizeId?: number;
+  doughTypeId?: number;
+};
 
 const generateVariation: GenerateVariationType = (productId, sizeId, doughTypeId) => {
   return {
@@ -52,7 +54,7 @@ async function generate() {
 
   await prisma.ingredient.createMany({
     data: ingredients.map((ing) => {
-      return { ...ing, price: new Prisma.Decimal(ing.price.toFixed(2)) };
+      return { ...ing, price: ing.price.toFixed(2) };
     })
   });
 

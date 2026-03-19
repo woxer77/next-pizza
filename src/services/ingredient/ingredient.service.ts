@@ -1,3 +1,4 @@
+import { serialize } from '@/helpers/utils';
 import prisma from '@/prisma/prisma-client';
 
 export const ingredientService = {
@@ -10,5 +11,5 @@ async function getIngredients() {
       id: 'asc'
     }
   });
-  return ingredients;
+  return serialize(ingredients);
 }

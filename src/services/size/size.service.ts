@@ -1,3 +1,4 @@
+import { serialize } from '@/helpers/utils';
 import prisma from '@/prisma/prisma-client';
 
 export const sizeService = {
@@ -10,5 +11,5 @@ async function getSizes() {
       id: 'asc'
     }
   });
-  return sizes;
+  return serialize(sizes);
 }

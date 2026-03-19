@@ -1,3 +1,4 @@
+import { serialize } from '@/helpers/utils';
 import prisma from '@/prisma/prisma-client';
 
 export const categoryService = {
@@ -7,7 +8,7 @@ export const categoryService = {
 
 async function getCategories() {
   const categories = await prisma.category.findMany();
-  return categories;
+  return serialize(categories);
 }
 
 async function getCategoriesWithProducts() {
@@ -25,5 +26,5 @@ async function getCategoriesWithProducts() {
     }
   });
 
-  return categories;
+  return serialize(categories);
 }

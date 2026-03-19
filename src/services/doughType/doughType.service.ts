@@ -1,3 +1,4 @@
+import { serialize } from '@/helpers/utils';
 import prisma from '@/prisma/prisma-client';
 
 export const doughTypeService = {
@@ -10,5 +11,5 @@ async function getDoughTypes() {
       id: 'asc'
     }
   });
-  return doughTypes;
+  return serialize(doughTypes);
 }

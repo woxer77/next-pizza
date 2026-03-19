@@ -28,19 +28,31 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   checkedValues,
   onCheckedChange
 }) => {
-  const [displayedItems, setDisplayedItems] = React.useState(() => items.slice(0, limit));
   const [inputVisibility, setInputVisibility] = React.useState(false);
   const [inputText, setInputText] = React.useState('');
+  const [expanded, setExpanded] = React.useState(false);
+
+  const normalizedInputText = inputText.trim().toLowerCase();
+
+  const displayedItems = React.useMemo(() => {
+    if (normalizedInputText) {
+      return items.filter((item) => item.text.toLowerCase().includes(normalizedInputText));
+    }
+
+    return expanded ? items : items.slice(0, limit);
+  }, [items, normalizedInputText, expanded, limit]);
 
   function switchDisplayMode() {
-    if (items.length === displayedItems.length) {
-      setInputVisibility(false);
-      setDisplayedItems(items.slice(0, limit));
-      setInputText('');
-      return;
-    }
-    setInputVisibility(true);
-    setDisplayedItems(items);
+    setExpanded((prev) => {
+      const nextValue = !prev;
+      setInputVisibility(nextValue);
+
+      if (!nextValue) {
+        resetInput();
+      }
+
+      return nextValue;
+    });
   }
 
   function resetInput() {
@@ -48,16 +60,6 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
     setInputText('');
   }
-
-  React.useEffect(() => {
-    if (inputText.trim()) {
-      const clearInputText = inputText.trim().toLowerCase();
-      const filteredItems = items.filter((item) => item.text.toLowerCase().includes(clearInputText));
-      setDisplayedItems(filteredItems);
-      return;
-    }
-    setDisplayedItems(items.slice(0, limit));
-  }, [inputText, items, limit]);
 
   return (
     <div className={cn('flex max-h-96 flex-col gap-2 overflow-y-auto pl-1', className)}>
@@ -85,9 +87,9 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
           onCheckedChange={onCheckedChange}
         />
       ))}
-      {items.length > limit && !inputText.trim() && (
+      {items.length > limit && !normalizedInputText && (
         <Button onClick={switchDisplayMode} variant="link" className="w-fit p-0 font-medium text-red-700">
-          {items.length === displayedItems.length ? '- Hide' : '+ Show all'}
+          {expanded ? '- Hide' : '+ Show all'}
         </Button>
       )}
     </div>

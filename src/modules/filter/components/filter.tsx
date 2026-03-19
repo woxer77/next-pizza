@@ -8,7 +8,7 @@ import FilterPrice from './filter-price';
 import FilterGroupSkeleton from './filter-group-skeleton';
 import FilterGroupContainer from './filter-group-container';
 
-import type { ClassProps, CheckboxOption } from '@/types/global';
+import type { ClassProps, CheckboxOption, SearchParams } from '@/types/global';
 import { cn } from '@/helpers/utils';
 import { MAX_PRICE, MIN_PRICE } from '../constants/filter-price.constants';
 import useSet from '../hooks/useSet';
@@ -21,17 +21,24 @@ interface FilterProps extends ClassProps {
   doughTypesPromise: Promise<CheckboxOption[]>;
   ingredientsPromise: Promise<CheckboxOption[]>;
   sizesPromise: Promise<CheckboxOption[]>;
+  searchParams: Awaited<SearchParams>;
 }
 
-const Filter: React.FC<FilterProps> = ({ className, doughTypesPromise, ingredientsPromise, sizesPromise }) => {
+const Filter: React.FC<FilterProps> = ({
+  className,
+  doughTypesPromise,
+  ingredientsPromise,
+  sizesPromise,
+  searchParams
+}) => {
   const router = useRouter();
-  const { params, defaultFilterParams } = useFilterParams();
+  const { defaultFilterParams } = useFilterParams(searchParams);
 
   const doughTypesSet = useSet(defaultFilterParams.doughTypes);
   const ingredientsSet = useSet(defaultFilterParams.ingredients);
   const sizesSet = useSet(defaultFilterParams.sizes);
-  const priceFrom = params.get(PARAMS.PRICE_FROM);
-  const priceTo = params.get(PARAMS.PRICE_TO);
+  const priceFrom = searchParams[PARAMS.PRICE_FROM];
+  const priceTo = searchParams[PARAMS.PRICE_TO];
 
   const defaultPriceRange = {
     // TODO: BUG! add validation from URL

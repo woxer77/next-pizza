@@ -2,11 +2,15 @@ import React from 'react';
 
 import Filter from './filter';
 
-import type { ClassProps } from '@/types/global';
+import type { ClassProps, SearchParams } from '@/types/global';
 import { API } from '@/services/api-client';
 import { mapToOptions } from '@/helpers/checkbox.helpers';
 
-const FilterServerData: React.FC<ClassProps> = ({ className }) => {
+interface FilterServerDataProps extends ClassProps {
+  searchParams: Awaited<SearchParams>;
+}
+
+const FilterServerData: React.FC<FilterServerDataProps> = ({ className, searchParams }) => {
   const doughTypesPromise = API.doughType.getAll().then(mapToOptions);
   const ingredientsPromise = API.ingredient.getAll().then(mapToOptions);
   const sizesPromise = API.size.getAll().then(mapToOptions);
@@ -17,6 +21,7 @@ const FilterServerData: React.FC<ClassProps> = ({ className }) => {
       doughTypesPromise={doughTypesPromise}
       ingredientsPromise={ingredientsPromise}
       sizesPromise={sizesPromise}
+      searchParams={searchParams}
     />
   );
 };

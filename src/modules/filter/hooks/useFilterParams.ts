@@ -1,14 +1,12 @@
-import { useSearchParams } from 'next/navigation';
 import { PARAMS } from '@/constants/query-params.constants';
+import { SearchParams } from '@/types/global';
 
-function useFilterParams() {
-  const params = useSearchParams();
-
+function useFilterParams(searchParams: Awaited<SearchParams>) {
   function getParamSet(filterGroup: string) {
-    const groupValues = params
-      .getAll(filterGroup)
-      .flatMap((value) => value.split(','))
-      .filter(Boolean);
+    const rawValue = searchParams[filterGroup];
+    const values = Array.isArray(rawValue) ? rawValue : rawValue ? [rawValue] : [];
+    const groupValues = values.flatMap((value) => value.split(',')).filter(Boolean);
+
     return new Set(groupValues);
   }
 
@@ -18,7 +16,7 @@ function useFilterParams() {
     sizes: getParamSet(PARAMS.SIZES)
   };
 
-  return { params, defaultFilterParams };
+  return { defaultFilterParams };
 }
 
 export default useFilterParams;

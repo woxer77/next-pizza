@@ -14,3 +14,5 @@ export interface IOption<T extends string | number> {
 }
 
 export type ProductRoute = `products/${number}`;
+
+export type SearchParams = Promise<Record<string, string | string[] | undefined>>;

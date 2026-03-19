@@ -4,10 +4,10 @@ import ProductGroup from '@/components/product-group';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
-import { categoryService } from '@/services/category/category.service';
+import { API } from '@/services/api-client';
 
 const Products: React.FC<ClassProps> = async ({ className }) => {
-  const categories = await categoryService.getAllWithProducts();
+  const categories = await API.category.getAllWithProducts();
 
   return (
     <main className={cn('flex w-full flex-col gap-10', className)}>

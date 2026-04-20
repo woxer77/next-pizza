@@ -9,6 +9,7 @@ import type { ClassProps } from '@/types/global';
 import type { TabsItem } from './types/tabs.types';
 import { cn } from '@/helpers/utils';
 import { DEFAULT_ACTIVE_ID, DEFAULT_TABS_LIMIT } from './constants/tabs.constants';
+import useTabsNavigation from './hooks/use-tabs-navigation';
 import useTabsAnimation from './hooks/use-tabs-animation';
 import useTabsState from './hooks/use-tabs-state';
 
@@ -25,12 +26,13 @@ const Tabs: React.FC<TabsProps> = ({
   defaultActiveId = DEFAULT_ACTIVE_ID
 }) => {
   const { activeId, setActiveId, displayedItems, itemsInSelect, isSelectActive } = useTabsState({
-    items: items,
-    limit: limit,
-    defaultActiveId: defaultActiveId
+    items,
+    limit,
+    defaultActiveId
   });
 
-  const { parentRef, moveableRef, targetRef, moveTabToSelect } = useTabsAnimation(activeId, setActiveId);
+  const { parentRef, moveableRef, targetRef } = useTabsAnimation(activeId);
+  const { onTabClick } = useTabsNavigation(activeId, setActiveId);
 
   return (
     <nav
@@ -39,7 +41,7 @@ const Tabs: React.FC<TabsProps> = ({
       {displayedItems.map(({ id, name }) => (
         <Tab
           key={id}
-          onClick={() => setActiveId(id)}
+          onClick={() => onTabClick(id)}
           ref={activeId === id ? targetRef : null}
           isActive={activeId === id}
           text={name}
@@ -49,7 +51,7 @@ const Tabs: React.FC<TabsProps> = ({
         <TabSelect
           items={itemsInSelect}
           value={isSelectActive ? activeId.toString() : ''}
-          onValueChange={moveTabToSelect}
+          onValueChange={onTabClick}
           ref={isSelectActive ? targetRef : null}
           isActive={isSelectActive}
         />

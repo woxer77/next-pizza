@@ -11,12 +11,16 @@ interface ProductGroupProps extends ClassProps {
   listClassName?: string;
   title: string;
   products: ProductGroupProduct[];
+  ref?: React.Ref<HTMLDivElement>;
+  id?: string;
 }
 
-const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products, listClassName }) => {
+const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products, listClassName, ref, id }) => {
   return (
     <section className={cn('last:mb-10', className)}>
-      <h2 className="mb-6 text-3xl font-bold capitalize">{title}</h2>
+      <h2 className="mb-6 text-3xl font-bold capitalize" ref={ref} id={id}>
+        {title}
+      </h2>
       <div className={cn('grid gap-12', listClassName, 'grid-cols-3')}>
         {products.map(({ id, name, description, image, basePrice }) => (
           <ProductCard

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProductGroup from '@/components/product-group';
+import ProductGroupObserver from './product-group-observer';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
@@ -12,7 +12,12 @@ const Products: React.FC<ClassProps> = async ({ className }) => {
   return (
     <main className={cn('flex w-full flex-col gap-10', className)}>
       {categories.map((category) => (
-        <ProductGroup key={category.id} title={category.name} products={category.products} />
+        <ProductGroupObserver
+          key={category.id}
+          categoryId={category.id}
+          title={category.name}
+          products={category.products}
+        />
       ))}
     </main>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { InputPriceType, PriceRange } from '../types/filter.types';
 import { useRouter, useSearchParams } from 'next/navigation';
 import qs from 'qs';
@@ -9,7 +10,7 @@ interface UseFilterPriceProps {
   max: number;
 }
 
-function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
+const useFilterPrice = ({ defaultValue, min, max }: UseFilterPriceProps) => {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -21,7 +22,7 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
   );
   const minStepsBetweenThumbs = max / 10;
 
-  function onInputChange(value: string, type: InputPriceType) {
+  const onInputChange = (value: string, type: InputPriceType) => {
     switch (type) {
       case 'from':
         setInputValues((prev) => ({ from: value, to: prev.to }));
@@ -33,9 +34,9 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
         const _exhaustiveCheck: never = type;
         return _exhaustiveCheck;
     }
-  }
+  };
 
-  function onInputBlur(value: string, type: InputPriceType) {
+  const onInputBlur = (value: string, type: InputPriceType) => {
     let newValue = Number(value);
     const isNewValueInvalid = isNaN(newValue) || newValue < min || newValue > max;
 
@@ -66,15 +67,15 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
         const _exhaustiveCheck: never = type;
         return _exhaustiveCheck;
     }
-  }
+  };
 
-  function onSliderChange(value: [number, number]) {
+  const onSliderChange = (value: [number, number]) => {
     setInputValues({ from: value[0].toString(), to: value[1].toString() });
-  }
+  };
 
-  function onSliderCommit(value: [number, number]) {
+  const onSliderCommit = (value: [number, number]) => {
     setPriceRange({ from: value[0], to: value[1] });
-  }
+  };
 
   React.useEffect(() => {
     const currentFilters = qs.parse(params.toString());
@@ -99,6 +100,6 @@ function useFilterPrice({ defaultValue, min, max }: UseFilterPriceProps) {
     onSliderChange,
     onSliderCommit
   };
-}
+};
 
 export default useFilterPrice;

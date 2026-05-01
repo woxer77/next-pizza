@@ -8,7 +8,7 @@ interface TabProps extends ClassProps, React.ComponentProps<'button'> {
   text: string;
 }
 
-const Tab: React.FC<TabProps> = ({ className, onClick, ref, isActive, text }) => {
+const Tab = ({ className, onClick, ref, isActive, text }: TabProps) => {
   return (
     <button
       onClick={onClick}

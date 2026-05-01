@@ -15,7 +15,7 @@ interface ProductGroupObserverProps {
   products: ProductGroupProduct[];
 }
 
-const ProductGroupObserver: React.FC<ProductGroupObserverProps> = ({ categoryId, title, products }) => {
+const ProductGroupObserver = ({ categoryId, title, products }: ProductGroupObserverProps) => {
   const productGroupRef = React.useRef(null);
   const productGroupId = getProductGroupId(categoryId);
 

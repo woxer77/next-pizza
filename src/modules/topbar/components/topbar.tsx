@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 
 import Sort from './sort';
 import { Skeleton } from '@/ui/skeleton';
@@ -7,7 +7,7 @@ import TopBarTabs from './topbar-tabs';
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
 
-const TopBar: React.FC<ClassProps> = ({ className }) => {
+const TopBar = ({ className }: ClassProps) => {
   return (
     <div className={cn('bg-background sticky top-0 z-5 shadow-lg shadow-neutral-200', className)} id="topbar">
       <div className="flex-space-between container py-6">

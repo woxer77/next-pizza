@@ -1,12 +1,10 @@
-import React from 'react';
-
 import CartButton from './cart-button';
 import ProfileButton from './profile-button';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
 
-const HeaderButtons: React.FC<ClassProps> = ({ className }) => {
+const HeaderButtons = ({ className }: ClassProps) => {
   return (
     <div className={cn('flex-center gap-x-3', className)}>
       <ProfileButton />

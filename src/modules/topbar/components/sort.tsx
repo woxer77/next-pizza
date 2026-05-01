@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ArrowUpDown } from 'lucide-react';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/ui/select';
 
@@ -9,7 +7,7 @@ import { sortOptions } from '../constants/sort.constants';
 
 const defaultOption = sortOptions[0];
 
-const Sort: React.FC<ClassProps> = ({ className }) => {
+const Sort = ({ className }: ClassProps) => {
   return (
     <Select defaultValue={defaultOption.value}>
       <SelectTrigger

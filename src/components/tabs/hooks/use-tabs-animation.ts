@@ -1,6 +1,6 @@
 import React from 'react';
 
-function useTabsAnimation(activeId: number) {
+const useTabsAnimation = (activeId: number) => {
   const parentRef = React.useRef<HTMLDivElement>(null);
   const moveableRef = React.useRef<HTMLDivElement>(null);
   const targetRef = React.useRef<HTMLButtonElement>(null);
@@ -25,6 +25,6 @@ function useTabsAnimation(activeId: number) {
   }, [activeId]);
 
   return { parentRef, moveableRef, targetRef };
-}
+};
 
 export default useTabsAnimation;

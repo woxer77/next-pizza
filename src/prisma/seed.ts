@@ -23,7 +23,7 @@ const generateVariation: GenerateVariationType = (productId, sizeId, doughTypeId
   };
 };
 
-async function generate() {
+const generate = async () => {
   await prisma.user.createMany({
     data: [
       {
@@ -316,9 +316,9 @@ async function generate() {
       totalPrice: 9.99
     }
   });
-}
+};
 
-async function clear() {
+const clear = async () => {
   const tables = [
     'User',
     'Category',
@@ -334,16 +334,16 @@ async function clear() {
   for (const table of tables) {
     await prisma.$executeRawUnsafe(`TRUNCATE TABLE "${table}" RESTART IDENTITY CASCADE`);
   }
-}
+};
 
-async function main() {
+const main = async () => {
   try {
     await clear();
     await generate();
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 main()
   .then(async () => {

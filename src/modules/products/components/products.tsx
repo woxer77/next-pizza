@@ -1,12 +1,10 @@
-import React from 'react';
-
 import ProductGroupObserver from './product-group-observer';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
 import { API } from '@/services/api-client';
 
-const Products: React.FC<ClassProps> = async ({ className }) => {
+const Products = async ({ className }: ClassProps) => {
   const categories = await API.category.getAllWithProducts();
 
   return (

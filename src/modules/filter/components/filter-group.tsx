@@ -10,7 +10,7 @@ interface FilterGroupProps extends ClassProps {
   title?: string;
 }
 
-const FilterGroup: React.FC<FilterGroupProps> = ({ className, children, title }) => {
+const FilterGroup = ({ className, children, title }: FilterGroupProps) => {
   return (
     <section className={cn('', className)}>
       {title && <FilterGroupTitle title={title} />}

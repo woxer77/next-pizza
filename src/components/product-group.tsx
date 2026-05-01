@@ -15,7 +15,7 @@ interface ProductGroupProps extends ClassProps {
   id?: string;
 }
 
-const ProductGroup: React.FC<ProductGroupProps> = ({ className, title, products, listClassName, ref, id }) => {
+const ProductGroup = ({ className, title, products, listClassName, ref, id }: ProductGroupProps) => {
   return (
     <section className={cn('last:mb-10', className)}>
       <h2 className="mb-6 text-3xl font-bold capitalize" ref={ref} id={id}>

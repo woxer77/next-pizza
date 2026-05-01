@@ -3,6 +3,7 @@ import { TopBar } from '@/modules/topbar/index';
 import { FilterServerData } from '@/modules/filter/index';
 import { Products } from '@/modules/products/index';
 import ProductsSkeleton from '@/ui/products-skeleton';
+
 import { SearchParams } from '@/types/global';
 
 interface HomePageProps {
@@ -10,7 +11,7 @@ interface HomePageProps {
 }
 
 export const revalidate = 60; // TODO: FOR DEVELOPMENT ONLY
-export default async function Home({ searchParams }: HomePageProps) {
+const Home = async ({ searchParams }: HomePageProps) => {
   const params = await searchParams;
 
   return (
@@ -24,4 +25,6 @@ export default async function Home({ searchParams }: HomePageProps) {
       </div>
     </>
   );
-}
+};
+
+export default Home;

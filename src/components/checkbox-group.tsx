@@ -19,7 +19,7 @@ interface CheckboxGroupProps extends ClassProps {
   onCheckedChange: (id: string) => void;
 }
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+const CheckboxGroup = ({
   className,
   items,
   limit = 5,
@@ -27,7 +27,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   name,
   checkedValues,
   onCheckedChange
-}) => {
+}: CheckboxGroupProps) => {
   const [inputVisibility, setInputVisibility] = React.useState(false);
   const [inputText, setInputText] = React.useState('');
   const [expanded, setExpanded] = React.useState(false);
@@ -42,7 +42,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     return expanded ? items : items.slice(0, limit);
   }, [items, normalizedInputText, expanded, limit]);
 
-  function switchDisplayMode() {
+  const switchDisplayMode = () => {
     setExpanded((prev) => {
       const nextValue = !prev;
       setInputVisibility(nextValue);
@@ -53,13 +53,13 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 
       return nextValue;
     });
-  }
+  };
 
-  function resetInput() {
+  const resetInput = () => {
     if (!inputText.trim()) return;
 
     setInputText('');
-  }
+  };
 
   return (
     <div className={cn('flex max-h-96 flex-col gap-2 overflow-y-auto pl-1', className)}>

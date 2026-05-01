@@ -14,14 +14,16 @@ export const metadata: Metadata = {
   description: 'E-commerce pizza with the best customization'
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
       <body className={`${nunito.className} antialiased`}>{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;

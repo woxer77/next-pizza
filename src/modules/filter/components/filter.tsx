@@ -24,13 +24,7 @@ interface FilterProps extends ClassProps {
   searchParams: Awaited<SearchParams>;
 }
 
-const Filter: React.FC<FilterProps> = ({
-  className,
-  doughTypesPromise,
-  ingredientsPromise,
-  sizesPromise,
-  searchParams
-}) => {
+const Filter = ({ className, doughTypesPromise, ingredientsPromise, sizesPromise, searchParams }: FilterProps) => {
   const router = useRouter();
   const { defaultFilterParams } = useFilterParams(searchParams);
 

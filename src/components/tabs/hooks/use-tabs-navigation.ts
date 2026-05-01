@@ -4,7 +4,7 @@ import { categoryStore } from '@/stores/category.store';
 
 import { getProductGroupId } from '@/modules/products/helpers/product-group.helpers';
 
-function useTabsNavigation(activeId: number, setActiveId: React.Dispatch<React.SetStateAction<number>>) {
+const useTabsNavigation = (activeId: number, setActiveId: React.Dispatch<React.SetStateAction<number>>) => {
   const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
   const categoryStoreId = categoryStore((state) => state.id);
 
@@ -59,6 +59,6 @@ function useTabsNavigation(activeId: number, setActiveId: React.Dispatch<React.S
   }, []);
 
   return { onTabClick };
-}
+};
 
 export default useTabsNavigation;

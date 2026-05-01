@@ -1,9 +1,9 @@
 import React from 'react';
 
-function useSet(initialSet: Set<string>) {
+const useSet = (initialSet: Set<string>) => {
   const [values, setValues] = React.useState<Set<string>>(initialSet);
 
-  function toggle(id: string) {
+  const toggle = (id: string) => {
     setValues((prev) => {
       const newValues = new Set(prev);
 
@@ -15,9 +15,9 @@ function useSet(initialSet: Set<string>) {
 
       return newValues;
     });
-  }
+  };
 
   return { toggle, values };
-}
+};
 
 export default useSet;

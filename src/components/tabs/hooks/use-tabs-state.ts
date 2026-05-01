@@ -8,7 +8,7 @@ interface UseTabsStateProps {
   defaultActiveId: number;
 }
 
-function useTabsState({ items, limit, defaultActiveId }: UseTabsStateProps) {
+const useTabsState = ({ items, limit, defaultActiveId }: UseTabsStateProps) => {
   const [activeId, setActiveId] = React.useState(defaultActiveId);
 
   const displayedItems = items.slice(0, limit);
@@ -22,6 +22,6 @@ function useTabsState({ items, limit, defaultActiveId }: UseTabsStateProps) {
     itemsInSelect,
     isSelectActive
   };
-}
+};
 
 export default useTabsState;

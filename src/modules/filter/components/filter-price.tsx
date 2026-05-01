@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { Slider } from '@/ui/slider';
 import { Input } from '@/ui/input';
 
@@ -17,7 +15,7 @@ interface FilterPriceProps extends ClassProps {
   step: number;
 }
 
-const FilterPrice: React.FC<FilterPriceProps> = ({ className, defaultValue, min = 0, max, step }) => {
+const FilterPrice = ({ className, defaultValue, min = 0, max, step }: FilterPriceProps) => {
   const { inputValues, minStepsBetweenThumbs, onInputChange, onInputBlur, onSliderChange, onSliderCommit } =
     useFilterPrice({ defaultValue, min, max });
 

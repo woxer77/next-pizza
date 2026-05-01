@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button } from '@/ui/button';
 import { MoveRight, ShoppingCart } from 'lucide-react';
 
@@ -11,7 +9,7 @@ interface CartButtonProps extends ClassProps {
   quantity: number;
 }
 
-const CartButton: React.FC<CartButtonProps> = ({ className, sum, quantity }) => {
+const CartButton = ({ className, sum, quantity }: CartButtonProps) => {
   return (
     <Button className={cn('group flex', className)}>
       <strong>${sum}</strong>

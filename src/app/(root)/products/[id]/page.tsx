@@ -1,3 +1,5 @@
-export default function ProductPage() {
+const ProductPage = () => {
   return <div>products</div>;
-}
+};
+
+export default ProductPage;

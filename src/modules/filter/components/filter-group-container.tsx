@@ -15,7 +15,7 @@ interface FilterGroupContainerProps {
   placeholder?: string;
 }
 
-const FilterGroupContainer: React.FC<FilterGroupContainerProps> = ({
+const FilterGroupContainer = ({
   title,
   promise,
   name,
@@ -23,7 +23,7 @@ const FilterGroupContainer: React.FC<FilterGroupContainerProps> = ({
   onCheckedChange,
   limit,
   placeholder
-}) => {
+}: FilterGroupContainerProps) => {
   const items = React.use(promise);
 
   return (

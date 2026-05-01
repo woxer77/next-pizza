@@ -1,16 +1,9 @@
-import { Header } from '@/modules/header';
-
 const RootLayout = ({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (
-    <>
-      <Header />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default RootLayout;

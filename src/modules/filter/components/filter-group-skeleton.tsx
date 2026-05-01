@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Skeleton } from '@/ui/skeleton';
 import FilterGroupTitle from './filter-group-title';
 
@@ -11,7 +9,7 @@ interface FilterGroupSkeletonProps extends ClassProps {
   title?: string;
 }
 
-const FilterGroupSkeleton: React.FC<FilterGroupSkeletonProps> = ({ className, limit = 5, title }) => {
+const FilterGroupSkeleton = ({ className, limit = 5, title }: FilterGroupSkeletonProps) => {
   return (
     <div className={cn('', className)}>
       {title && <FilterGroupTitle title={title} />}

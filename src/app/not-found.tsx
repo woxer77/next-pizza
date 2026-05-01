@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { MoveLeft, RotateCcw } from 'lucide-react';
 import { Button } from '@/ui/button';
 import Image from 'next/image';
@@ -9,16 +7,16 @@ import { Header } from '@/modules/header';
 
 import { useRouter } from 'next/navigation';
 
-const NotFound: React.FC = () => {
+const NotFound = () => {
   const router = useRouter();
 
-  function navigateHome() {
+  const navigateHome = () => {
     router.push('/');
-  }
+  };
 
-  function refreshPage() {
+  const refreshPage = () => {
     router.refresh();
-  }
+  };
 
   return (
     <>

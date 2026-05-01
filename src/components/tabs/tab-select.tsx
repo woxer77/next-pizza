@@ -14,7 +14,7 @@ interface TabSelectProps extends ClassProps {
   isActive: boolean;
 }
 
-const TabSelect: React.FC<TabSelectProps> = ({ className, items, value, onValueChange, ref, isActive }) => {
+const TabSelect = ({ className, items, value, onValueChange, ref, isActive }: TabSelectProps) => {
   return (
     <Select value={value} onValueChange={onValueChange}>
       <SelectTrigger

@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import Tab from './tab';
 import TabSelect from './tab-select';
 
@@ -19,12 +17,12 @@ interface TabsProps extends ClassProps {
   defaultActiveId?: number;
 }
 
-const Tabs: React.FC<TabsProps> = ({
+const Tabs = ({
   className,
   items,
   limit = DEFAULT_TABS_LIMIT,
   defaultActiveId = DEFAULT_ACTIVE_ID
-}) => {
+}: TabsProps) => {
   const { activeId, setActiveId, displayedItems, itemsInSelect, isSelectActive } = useTabsState({
     items,
     limit,

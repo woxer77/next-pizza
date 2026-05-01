@@ -40,8 +40,6 @@ function useTabsNavigation(activeId: number, setActiveId: React.Dispatch<React.S
   const onTabClick = (id: number | string) => {
     const nextId = parseTabId(id);
 
-    if (activeId === nextId) return;
-
     setActiveId(nextId);
     jumpToCategory(nextId);
   };

@@ -1,15 +1,15 @@
 import { SearchParams } from '@/types/global';
-import Home from '@/pages/home/components/home';
+import HomePage from '@/pages/home/components/home-page';
 
-interface HomePageProps {
+interface HomeRouteProps {
   searchParams: SearchParams;
 }
 
 export const revalidate = 60; // TODO: FOR DEVELOPMENT ONLY
-const HomePage = async ({ searchParams }: HomePageProps) => {
+const HomeRoute = async ({ searchParams }: HomeRouteProps) => {
   const params = await searchParams;
 
-  return <Home params={params} />;
+  return <HomePage params={params} />;
 };
 
-export default HomePage;
+export default HomeRoute;

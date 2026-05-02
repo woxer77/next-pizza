@@ -1,14 +1,15 @@
-import Home from '@/pages/home/components/home';
-import { SearchParams } from '@/types/global';
+import ProductPage from '@/pages/product/components/product-page';
 
-interface ProductPageProps {
-  searchParams: SearchParams;
+interface ProductRouteProps {
+  params: {
+    id: string;
+  };
 }
 
-const ProductPage = async ({ searchParams }: ProductPageProps) => {
-  const params = await searchParams;
+const ProductRoute = async ({ params }: ProductRouteProps) => {
+  const { id } = await params;
 
-  return <Home params={params} />;
+  return <ProductPage id={id} />;
 };
 
-export default ProductPage;
+export default ProductRoute;

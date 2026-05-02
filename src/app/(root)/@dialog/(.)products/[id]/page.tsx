@@ -1,15 +1,15 @@
 import ProductDialog from '@/components/product-dialog';
 
-interface DialogPageProps {
+interface ProductDialogInterceptorProps {
   params: {
     id: string;
   };
 }
 
-const DialogPage = async ({ params }: DialogPageProps) => {
+const ProductDialogInterceptor = async ({ params }: ProductDialogInterceptorProps) => {
   const { id } = await params;
 
   return <ProductDialog id={id} />;
 };
 
-export default DialogPage;
+export default ProductDialogInterceptor;

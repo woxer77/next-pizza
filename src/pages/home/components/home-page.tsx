@@ -6,11 +6,11 @@ import ProductsSkeleton from '@/ui/products-skeleton';
 
 import { SearchParams } from '@/types/global';
 
-interface HomeProps {
+interface HomePageProps {
   params?: Awaited<SearchParams>;
 }
 
-const Home = ({ params }: HomeProps) => {
+const HomePage = ({ params }: HomePageProps) => {
   return (
     <>
       <TopBar />
@@ -24,4 +24,4 @@ const Home = ({ params }: HomeProps) => {
   );
 };
 
-export default Home;
+export default HomePage;

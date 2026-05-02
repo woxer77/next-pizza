@@ -1,9 +1,9 @@
 import { PARAMS } from '@/constants/query-params.constants';
 import { SearchParams } from '@/types/global';
 
-const useFilterParams = (searchParams: Awaited<SearchParams>) => {
+const useFilterParams = (searchParams?: Awaited<SearchParams>) => {
   const getParamSet = (filterGroup: string) => {
-    const rawValue = searchParams[filterGroup];
+    const rawValue = searchParams?.[filterGroup];
     const values = Array.isArray(rawValue) ? rawValue : rawValue ? [rawValue] : [];
     const groupValues = values.flatMap((value) => value.split(',')).filter(Boolean);
 

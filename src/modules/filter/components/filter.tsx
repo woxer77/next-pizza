@@ -21,7 +21,7 @@ interface FilterProps extends ClassProps {
   doughTypesPromise: Promise<CheckboxOption[]>;
   ingredientsPromise: Promise<CheckboxOption[]>;
   sizesPromise: Promise<CheckboxOption[]>;
-  searchParams: Awaited<SearchParams>;
+  searchParams?: Awaited<SearchParams>;
 }
 
 const Filter = ({ className, doughTypesPromise, ingredientsPromise, sizesPromise, searchParams }: FilterProps) => {
@@ -31,8 +31,8 @@ const Filter = ({ className, doughTypesPromise, ingredientsPromise, sizesPromise
   const doughTypesSet = useSet(defaultFilterParams.doughTypes);
   const ingredientsSet = useSet(defaultFilterParams.ingredients);
   const sizesSet = useSet(defaultFilterParams.sizes);
-  const priceFrom = searchParams[PARAMS.PRICE_FROM];
-  const priceTo = searchParams[PARAMS.PRICE_TO];
+  const priceFrom = searchParams?.[PARAMS.PRICE_FROM];
+  const priceTo = searchParams?.[PARAMS.PRICE_TO];
 
   const defaultPriceRange = {
     // TODO: BUG! add validation from URL

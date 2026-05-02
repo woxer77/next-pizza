@@ -5,7 +5,7 @@ import { API } from '@/services/api-client';
 import { mapToOptions } from '@/helpers/checkbox.helpers';
 
 interface FilterServerDataProps extends ClassProps {
-  searchParams: Awaited<SearchParams>;
+  searchParams?: Awaited<SearchParams>;
 }
 
 const FilterServerData = ({ className, searchParams }: FilterServerDataProps) => {

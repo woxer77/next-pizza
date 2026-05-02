@@ -1,12 +1,15 @@
 import { Header } from '@/modules/header';
 
 const RootLayout = ({
-  children
+  children,
+  dialog
 }: Readonly<{
   children: React.ReactNode;
+  dialog: React.ReactNode;
 }>) => {
   return (
     <>
+      {dialog}
       <Header />
       {children}
     </>

@@ -1,15 +1,13 @@
+'use client';
+
 import ProductDialog from '@/components/product-dialog';
 
-interface ProductDialogInterceptorProps {
-  params: {
-    id: string;
-  };
-}
+import { productStore } from '@/stores/product.store';
 
-const ProductDialogInterceptor = async ({ params }: ProductDialogInterceptorProps) => {
-  const { id } = await params;
+const ProductDialogInterceptor = () => {
+  const productFromStore = productStore((state) => state.product);
 
-  return <ProductDialog id={id} />;
+  return <ProductDialog product={productFromStore} />;
 };
 
 export default ProductDialogInterceptor;

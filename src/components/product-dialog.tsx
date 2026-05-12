@@ -3,16 +3,18 @@
 import React from 'react';
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/ui/dialog';
+import { Skeleton } from '@/ui/skeleton';
 
 import type { ClassProps } from '@/types/global';
 import { cn } from '@/helpers/utils';
 import { useRouter } from 'next/navigation';
+import { ProductWithRelations } from '@/modules/products/index';
 
 interface ProductDialogProps extends ClassProps {
-  id: string;
+  product: ProductWithRelations | null;
 }
 
-const ProductDialog = ({ className, id }: ProductDialogProps) => {
+const ProductDialog = ({ className, product }: ProductDialogProps) => {
   const [isOpen, setIsOpen] = React.useState(true);
   const router = useRouter();
 
@@ -23,14 +25,18 @@ const ProductDialog = ({ className, id }: ProductDialogProps) => {
     }
   };
 
+  if (!product) {
+    return <Skeleton className={cn('h-64 w-full', className)} />;
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogContent className={cn('', className)}>
         <DialogHeader>
-          <DialogTitle>Product {id}</DialogTitle>
-          <DialogDescription>Product description {id}</DialogDescription>
+          <DialogTitle>{product.name}</DialogTitle>
+          <DialogDescription>{product.description}</DialogDescription>
         </DialogHeader>
-        <p>Product content {id}</p>
+        123
       </DialogContent>
     </Dialog>
   );

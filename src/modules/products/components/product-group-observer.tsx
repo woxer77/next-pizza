@@ -4,7 +4,7 @@ import React from 'react';
 
 import ProductGroup from '@/components/product-group';
 
-import { ProductGroupProduct } from '../types/product.types';
+import { ProductWithRelations } from '../types/product.types';
 import { categoryStore } from '@/stores/category.store';
 import { getProductGroupId } from '../helpers/product-group.helpers';
 
@@ -12,7 +12,7 @@ interface ProductGroupObserverProps {
   listClassName?: string;
   categoryId: number;
   title: string;
-  products: ProductGroupProduct[];
+  products: ProductWithRelations[];
 }
 
 const ProductGroupObserver = ({ categoryId, title, products }: ProductGroupObserverProps) => {

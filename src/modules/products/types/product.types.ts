@@ -6,7 +6,7 @@ import type { ProductVariation } from '@prisma/client';
 export interface Product extends Omit<PrismaProduct, 'basePrice'> {
   basePrice: number;
 }
-export interface ProductGroupProduct extends Product {
+export interface ProductWithRelations extends Product {
   variations: ProductVariation[];
   ingredients: Ingredient[];
 }

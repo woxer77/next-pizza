@@ -78,7 +78,7 @@ const useFilterPrice = ({ defaultValue, min, max }: UseFilterPriceProps) => {
   };
 
   React.useEffect(() => {
-    const currentFilters = qs.parse(params.toString());
+    const currentFilters = qs.parse(params?.toString() ?? '');
 
     const newFilters = {
       ...currentFilters,

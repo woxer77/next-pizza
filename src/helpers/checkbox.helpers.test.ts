@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest'; // TODO: replace with jest
 import { mapToOptions } from './checkbox.helpers';
 
 describe('mapToOptions', () => {

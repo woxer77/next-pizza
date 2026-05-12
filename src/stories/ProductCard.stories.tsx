@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/nextjs-vite';
+/* import { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import ProductCard from '@/ui/product-card';
 
@@ -21,4 +21,4 @@ export const Card: Story = {
     image: '/pizza/traditional/ham-and-cheese.png'
   },
   render: (args) => <ProductCard {...args} />
-};
+}; */
